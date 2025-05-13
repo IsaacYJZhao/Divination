@@ -5,6 +5,7 @@
   
   <view class="instructions">
     <text>请摇动手机生成卦象</text>
+    <text class="sub-text">(共需摇6次)</text>
   </view>
   
   <view class="coins-container" wx:if="{{showingCoins}}">
@@ -14,22 +15,29 @@
   </view>
   
   <view class="options" wx:if="{{showOptions}}">
-    <text>请选择本次摇卦结果：</text>
-    <button bindtap="selectOption" data-value="3">老阳 (全正)</button>
-    <button bindtap="selectOption" data-value="0">老阴 (全反)</button>
-    <button bindtap="selectOption" data-value="2">少阳 (两正一反)</button>
-    <button bindtap="selectOption" data-value="1">少阴 (两反一正)</button>
+    <text class="options-title">请选择本次摇卦结果：</text>
+    <button bindtap="selectOption" data-value="3" class="option-btn">老阳 (全正)</button>
+    <button bindtap="selectOption" data-value="0" class="option-btn">老阴 (全反)</button>
+    <button bindtap="selectOption" data-value="2" class="option-btn">少阳 (两正一反)</button>
+    <button bindtap="selectOption" data-value="1" class="option-btn">少阴 (两反一正)</button>
   </view>
   
   <view class="progress" wx:if="{{currentStep > 0}}">
-    <text>已完成 {{currentStep}}/6 次摇卦</text>
-    <progress percent="{{currentStep/6*100}}" show-info stroke-width="6"></progress>
+    <progress percent="{{currentStep/6*100}}" activeColor="#1aad19" stroke-width="6"></progress>
+    <text class="progress-text">已完成 {{currentStep}}/6 次摇卦</text>
   </view>
   
   <view class="history" wx:if="{{history.length > 0}}">
-    <text>历史记录：</text>
-    <view wx:for="{{history}}" wx:key="index">
-      <text>第{{index+1}}次: {{['少阴','少阳','老阴','老阳'][item]}}</text>
+    <text class="history-title">摇卦记录：</text>
+    <view class="history-items">
+      <view class="history-item" wx:for="{{history}}" wx:key="index">
+        <text class="history-step">第{{index+1}}次:</text>
+        <text class="history-value {{getHistoryClass(item)}}">{{getHistoryText(item)}}</text>
+      </view>
     </view>
+  </view>
+  
+  <view class="footer">
+    <text class="footer-text">易经摇卦 - 传承千年智慧</text>
   </view>
 </view>
