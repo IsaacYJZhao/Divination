@@ -6,7 +6,8 @@
   "window": {
     "navigationBarTitleText": "易经摇卦",
     "navigationBarBackgroundColor": "#f8f8f8",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f8"
   },
   "requiredBackgroundModes": ["accelerometer"],
   "sitemapLocation": "sitemap.json"
