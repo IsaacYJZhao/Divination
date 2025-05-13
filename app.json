@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/result/result"
+  ],
+  "window": {
+    "navigationBarTitleText": "易经摇卦",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTextStyle": "black"
+  },
+  "requiredBackgroundModes": ["accelerometer"],
+  "sitemapLocation": "sitemap.json"
+}
