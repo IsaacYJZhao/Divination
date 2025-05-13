@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="header">
+    <text>{{guaInfo.name}}</text>
+  </view>
+  
+  <view class="gua-image">
+    <view wx:for="{{guaCode}}" wx:key="index" class="yao">
+      <view class="yao-line {{item === '1' ? 'yang' : 'yin'}}"></view>
+      <text class="yao-desc">{{['老阴','少阴','少阳','老阳'][history[index]]}}</text>
+    </view>
+  </view>
+  
+  <view class="gua-desc">
+    <text class="title">卦辞：</text>
+    <text>{{guaInfo.desc}}</text>
+  </view>
+  
+  <view class="gua-detail">
+    <text class="title">详解：</text>
+    <text>{{guaInfo.detail}}</text>
+  </view>
+  
+  <button bindtap="backToHome" class="back-btn">返回重新摇卦</button>
+</view>
