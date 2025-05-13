@@ -1,24 +1,56 @@
 <view class="container">
   <view class="header">
-    <text>{{guaInfo.name}}</text>
+    <text>{{bianInfo.name}}</text>
   </view>
   
-  <view class="gua-image">
-    <view wx:for="{{guaCode}}" wx:key="index" class="yao">
-      <view class="yao-line {{item === '1' ? 'yang' : 'yin'}}"></view>
-      <text class="yao-desc">{{['老阴','少阴','少阳','老阳'][history[index]]}}</text>
+  <view class="gua-container">
+    <view class="gua-section ben-gua">
+      <text class="gua-title">本卦: {{benGua.name}}</text>
+      <view class="gua-image">
+        <view wx:for="{{benCode}}" wx:key="index" class="yao">
+          <view class="yao-line {{item === '1' ? 'yang' : 'yin'}}"></view>
+          <text class="yao-desc">{{getYaoDesc(index)}}</text>
+        </view>
+      </view>
+      <text class="gua-change" wx:if="{{hasChange(index)}}">→ {{getChangeResult(index)}}</text>
+    </view>
+    
+    <view class="arrow">→</view>
+    
+    <view class="gua-section bian-gua">
+      <text class="gua-title">变卦: {{bianGua.name}}</text>
+      <view class="gua-image">
+        <view wx:for="{{bianCode}}" wx:key="index" class="yao">
+          <view class="yao-line {{item === '1' ? 'yang' : 'yin'}}"></view>
+          <text class="yao-desc">{{getBianYaoDesc(index)}}</text>
+        </view>
+      </view>
     </view>
   </view>
   
-  <view class="gua-desc">
-    <text class="title">卦辞：</text>
-    <text>{{guaInfo.desc}}</text>
+  <view class="divider"></view>
+  
+  <view class="gua-explain">
+    <text class="explain-title">变卦解释</text>
+    <text class="explain-content">{{bianInfo.desc}}</text>
   </view>
   
-  <view class="gua-detail">
-    <text class="title">详解：</text>
-    <text>{{guaInfo.detail}}</text>
+  <view class="gua-explain">
+    <text class="explain-title">本卦详解</text>
+    <text class="explain-content">{{benGua.detail}}</text>
   </view>
   
-  <button bindtap="backToHome" class="back-btn">返回重新摇卦</button>
+  <view class="gua-explain" wx:if="{{bianGua.name !== benGua.name}}">
+    <text class="explain-title">变卦详解</text>
+    <text class="explain-content">{{bianGua.detail}}</text>
+  </view>
+  
+  <view class="action-btns">
+    <button bindtap="backToHome" class="action-btn">重新摇卦</button>
+    <button bindtap="saveResult" class="action-btn save-btn">保存结果</button>
+  </view>
+  
+  <view class="footer">
+    <text class="footer-text">易经智慧 · 趋吉避凶</text>
+  </view>
 </view>
